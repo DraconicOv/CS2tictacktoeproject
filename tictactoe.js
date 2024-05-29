@@ -7,34 +7,28 @@ function getComputerChoice(){
 }
 var humanScore, computerScore;
 computerScore = humanScore = 0;
+
 /**
- * Plays a game of rock-paper-scissors.
- * The game consists of five rounds.
+ * Plays a round of rock-paper-scissors between a human and a computer.
+ * Increments the score of the winner.
+ * @param {string} humanChoice - The choice made by the human player (rock, paper, or scissors).
+ * @param {string} computerChoice - The choice made by the computer player (rock, paper, or scissors).
+ * @returns {string} - The result of the round (win, lose, or tie).
  */
-function playGame(){
-    /**
-     * Plays a round of rock-paper-scissors between a human and a computer.
-     * Increments the score of the winner.
-     * @param {string} humanChoice - The choice made by the human player (rock, paper, or scissors).
-     * @param {string} computerChoice - The choice made by the computer player (rock, paper, or scissors).
-     * @returns {string} - The result of the round (win, lose, or tie).
-     */
-    function playRound(humanChoice, computerChoice){
+function playRound(humanChoice){
         results = {
             "rock": {"rock": "tie", "paper": "lose", "scissors": "win"},
-            "paper": {"rock": "win", "paper": "tie", "scissors": "lose"},
-            "scissors": {"rock": "lose", "paper": "win", "scissors": "tie"}
-        }
-        result = results[humanChoice.toLowerCase()][computerChoice.toLowerCase()];
-        result == "win" ? humanScore++ : result == "lose" ? computerScore++ : null;
-        return result;
+         "paper": {"rock": "win", "paper": "tie", "scissors": "lose"},
+         "scissors": {"rock": "lose", "paper": "win", "scissors": "tie"}
     }
-    for(var i = 0; i<5; i++){
-        humanChoice = prompt("Rock, paper, or scissors?");
-        computerChoice = getComputerChoice();
-        console.log("You chose " + humanChoice + " and the computer chose " + computerChoice);
-        console.log("You " + playRound(humanChoice, computerChoice) + "!");
-    }
-    console.log("The final score is " + humanScore + " to " + computerScore + ".")
+     result = results[humanChoice.toLowerCase()][getComputerChoice().toLowerCase()];
+     result == "win" ? humanScore++ : result == "lose" ? computerScore++ : null;
+     document.getElementById("results").textContent = `You ${result} this round!`;
+     document.getElementById("score").textContent = `Human: ${humanScore} Computer: ${computerScore}`;
+     if (humanScore >= 5 || computerScore >=  5){
+         winner = humanScore >= 5 ? "You win!" : "You lose!";
+         document.getElementById("results").textContent = winner;
+         humanScore = computerScore = 0;
+         alert(`Game over! ${winner}`)
+     }
 }
-playGame()

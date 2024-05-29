@@ -1,4 +1,21 @@
-<script>
-    console.log("hello world")
-</script>
-<script src="tictactoe.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <script src="tictactoe.js"></script>
+</head>
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id="results"></div>
+    <div id="score"></div>
+
+    <script>
+        document.getElementById('rock').addEventListener('click', playRound('rock'));
+        document.getElementById('paper').addEventListener('click', playRound('paper'));
+        document.getElementById('scissors').addEventListener('click', playRound('scissors'));
+    </script>
+</body>
+</html>
