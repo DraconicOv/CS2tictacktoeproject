@@ -23,12 +23,5 @@ function playRound(humanChoice){
     }
      result = results[humanChoice.toLowerCase()][getComputerChoice().toLowerCase()];
      result == "win" ? humanScore++ : result == "lose" ? computerScore++ : null;
-     document.getElementById("results").textContent = `You ${result} this round!`;
-     document.getElementById("score").textContent = `Human: ${humanScore} Computer: ${computerScore}`;
-     if (humanScore >= 5 || computerScore >=  5){
-         winner = humanScore >= 5 ? "You win!" : "You lose!";
-         document.getElementById("results").textContent = winner;
-         humanScore = computerScore = 0;
-         alert(`Game over! ${winner}`)
-     }
+     return result
 }
